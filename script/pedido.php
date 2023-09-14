@@ -14,11 +14,26 @@
     $qtdoleo = $_POST ['qtdoleo'];
     $qtdpneu = $_POST ['qtdpneu'];
     $qtdvela = $_POST ['qtdvela'];
+    $qtdtotal = 0;
+    $qtdtotal = $qtdoleo + $qtdpneu + $qtdvela;
+    echo "<p> Quantidade de itens solicitados ". $qtdtotal."</p><br>";
+    $totaltaxa = 0.00;
+    // Definindo as constantes
+    define('PRECOPNEU', 100);
+    define('PRECOOLEO', 10); 
+    define('PRECOVELA', 4);
 
         echo "<p> Pedido processado ás ".date('H:i:s')."</p>";
         echo "<p> Quantidade de caixas de óleo ". $qtdoleo."</p>";
         echo "<p> Quantidade de caixas de pneu ". $qtdpneu."</p>";
         echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
+        echo $qtdtotal."<br>";
+        echo $totaltaxa;
+
+        echo PRECOPNEU;
+        echo PRECOOLEO;
+        echo PRECOVELA;
+
     ?>
     <a href="http://localhost/oficina/index.php">Voltar</a>
 </body>
