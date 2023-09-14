@@ -16,8 +16,8 @@
     $qtdvela = $_POST ['qtdvela'];
     $qtdtotal = 0;
     $qtdtotal = $qtdoleo + $qtdpneu + $qtdvela;
-    echo "<p> Quantidade de itens solicitados ". $qtdtotal."</p><br>";
-    $totaltaxa = 0.00;
+    echo "<p> Quantidade de itens solicitados ". $qtdtotal."</p>";
+    $valortotal = 0.00;
     // Definindo as constantes
     define('PRECOPNEU', 100);
     define('PRECOOLEO', 10); 
@@ -27,13 +27,8 @@
         echo "<p> Quantidade de caixas de óleo ". $qtdoleo."</p>";
         echo "<p> Quantidade de caixas de pneu ". $qtdpneu."</p>";
         echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
-        echo $qtdtotal."<br>";
-        echo $totaltaxa;
-
-        echo PRECOPNEU;
-        echo PRECOOLEO;
-        echo PRECOVELA;
-
+        $valortotal = $qtdoleo * PRECOOLEO + $qtdpneu * PRECOPNEU + $qtdvela * PRECOVELA;
+        echo "<p>Subtotal: R$".number_format($valortotal,2)."</p>";
     ?>
     <a href="http://localhost/oficina/index.php">Voltar</a>
 </body>
