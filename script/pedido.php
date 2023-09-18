@@ -29,6 +29,56 @@
         echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
         $valortotal = $qtdoleo * PRECOOLEO + $qtdpneu * PRECOPNEU + $qtdvela * PRECOVELA;
         echo "<p>Subtotal: R$".number_format($valortotal,2)."</p>";
+    $taxa = 0.10; //represnta o valor de taxa
+    $totalcomimposto = $valortotal * (1 + $taxa);
+    echo "<p> Taxa de impostos: ". $taxa."</p>"; 
+    echo "<p>Valor com Imposto: R$".number_format($totalcomimposto,2)."</p>";
+
+    //trabalhando com o se
+    if ($qtdtotal == 0) {
+        echo '<p style="color:red">';
+        echo 'Faça sua solicitação preenchendo os itens da página anterior';
+        echo '</p>';
+    } else {
+        if ($qtdoleo > 0) 
+        echo "<p> Quantidade de caixas de óleo ". $qtdoleo."</p>";
+        if ($qtdpneu > 0) 
+            echo "<p> Quantidade de caixas de pneu ". $qtdpneu."</p>";
+        if ($qtdvela > 0)
+            echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
+    }
+
+if ($qtdpneu < 10) {
+    $desconto = 0;
+} elseif (($qtdpneu >=10) && ($qtdpneu <=49)) {
+    $desconto = 5;
+} elseif (($qtdpneu >=50) && ($qtdpneu <=99)) {
+    $desconto = 10;
+} elseif ($qtdpneu >= 100) {
+    $desconto = 15;
+}
+
+echo "<p> Seus descontos nos pneus será de ". $desconto."</p>";
+
+//rever pq não pegou a varável
+switch ($publicidade) {
+    case "a":
+        echo "<p>Cliente Costumeiro</p>";
+        break;
+        case "b":
+            echo "<p>Televisão</p>";
+            break;
+        case  "c":
+            echo "<p>Telefone</p>";
+            break;
+        case "d":
+            echo "<p>Boca a Boca</p>";
+            break;    
+    default:
+    echo "<p>Cliente não informou de onde veio</p>";
+        break;
+}
+
     ?>
     <a href="http://localhost/oficina/index.php">Voltar</a>
 </body>
