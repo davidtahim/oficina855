@@ -28,7 +28,10 @@
         echo "<p> Quantidade de caixas de óleo ". $qtdoleo."</p>";
         echo "<p> Quantidade de caixas de pneu ". $qtdpneu."</p>";
         echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
-        $valortotal = $qtdoleo * PRECOOLEO + $qtdpneu * PRECOPNEU + $qtdvela * PRECOVELA;
+        $resultadooleo = $qtdoleo * PRECOOLEO;
+        $resultadopneu = $qtdpneu * PRECOPNEU;
+        $resultadovela = $qtdvela * PRECOVELA;
+        $valortotal =  $resultadooleo + $resultadopneu  + $resultadovela;
         echo "<p>Subtotal: R$".number_format($valortotal,2)."</p>";
     $taxa = 0.10; //represnta o valor de taxa
     $totalcomimposto = $valortotal * (1 + $taxa);
@@ -60,6 +63,7 @@ if ($qtdpneu < 10) {
 }
 
 echo "<p> Seus descontos nos pneus será de ". $desconto."</p>";
+
 
 switch($cliente) {
     case "a" :
