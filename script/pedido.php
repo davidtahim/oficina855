@@ -25,19 +25,6 @@
     define('PRECOVELA', 4);
 
         echo "<p> Pedido processado ás ".date('H:i:s')."</p>";
-        echo "<p> Quantidade de caixas de óleo ". $qtdoleo."</p>";
-        echo "<p> Quantidade de caixas de pneu ". $qtdpneu."</p>";
-        echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
-        $resultadooleo = $qtdoleo * PRECOOLEO;
-        $resultadopneu = $qtdpneu * PRECOPNEU;
-        $resultadovela = $qtdvela * PRECOVELA;
-        $valortotal =  $resultadooleo + $resultadopneu  + $resultadovela;
-        echo "<p>Subtotal: R$".number_format($valortotal,2)."</p>";
-    $taxa = 0.10; //represnta o valor de taxa
-    $totalcomimposto = $valortotal * (1 + $taxa);
-    echo "<p> Taxa de impostos: ". $taxa."</p>"; 
-    echo "<p>Valor com Imposto: R$".number_format($totalcomimposto,2)."</p>";
-
     //trabalhando com o se
     if ($qtdtotal == 0) {
         echo '<p style="color:red">';
@@ -52,17 +39,37 @@
             echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
     }
 
-if ($qtdpneu < 10) {
-    $desconto = 0;
-} elseif (($qtdpneu >=10) && ($qtdpneu <=49)) {
-    $desconto = 5;
-} elseif (($qtdpneu >=50) && ($qtdpneu <=99)) {
-    $desconto = 10;
-} elseif ($qtdpneu >= 100) {
-    $desconto = 15;
-}
+        $resultadooleo = $qtdoleo * PRECOOLEO;
+        $resultadopneu = $qtdpneu * PRECOPNEU;
+        $resultadovela = $qtdvela * PRECOVELA;
+        $valortotal =  $resultadooleo + $resultadopneu  + $resultadovela;
+        echo "<p>Subtotal: R$".number_format($valortotal,2)."</p>";
+   
+   
+        //cálculo do desconto do pneu
+        if ($qtdpneu < 10) {
+            $desconto = 0;
+        } elseif (($qtdpneu >=10) && ($qtdpneu <=49)) {
+            $desconto = 5;
+        } elseif (($qtdpneu >=50) && ($qtdpneu <=99)) {
+            $desconto = 10;
+        } elseif ($qtdpneu >= 100) {
+            $desconto = 15;
+        }
+            echo "<p> Desconto: ".$desconto."% </p>";
+        $descontopneu = $resultadopneu * ($desconto/100);
+        $pneucomdesconto = $resultadopneu - $descontopneu;
 
-echo "<p> Seus descontos nos pneus será de ". $desconto."</p>";
+$valortotal =  $resultadooleo + $pneucomdesconto  + $resultadovela;
+    $taxa = 0.10; //represnta o valor de taxa
+    $totalcomimposto = $valortotal * (1 + $taxa);
+    echo "<p> Taxa de impostos: ". $taxa."</p>"; 
+    echo "<p>Valor Total com Imposto: R$".number_format($totalcomimposto,2)."</p>";
+
+
+
+
+echo "<p> Seus descontos nos pneus será de R$ ". $pneucomdesconto."</p>";
 
 
 switch($cliente) {
