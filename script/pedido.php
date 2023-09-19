@@ -14,6 +14,7 @@
     $qtdoleo = $_POST ['qtdoleo'];
     $qtdpneu = $_POST ['qtdpneu'];
     $qtdvela = $_POST ['qtdvela'];
+    $cliente = $_POST ['cliente'];
     $qtdtotal = 0;
     $qtdtotal = $qtdoleo + $qtdpneu + $qtdvela;
     echo "<p> Quantidade de itens solicitados ". $qtdtotal."</p>";
@@ -60,24 +61,23 @@ if ($qtdpneu < 10) {
 
 echo "<p> Seus descontos nos pneus será de ". $desconto."</p>";
 
-//rever pq não pegou a varável
-switch ($publicidade) {
-    case "a":
-        echo "<p>Cliente Costumeiro</p>";
-        break;
-        case "b":
-            echo "<p>Televisão</p>";
-            break;
-        case  "c":
-            echo "<p>Telefone</p>";
-            break;
-        case "d":
-            echo "<p>Boca a Boca</p>";
-            break;    
-    default:
-    echo "<p>Cliente não informou de onde veio</p>";
-        break;
-}
+switch($cliente) {
+    case "a" :
+      echo "<p>Cliente Costumeiro</p>";
+      break;
+    case "b" :
+      echo "<p>Televisão</p>";
+      break;
+    case "c" :
+      echo "<p>Telefone.</p>";
+      break;
+    case "d" :
+      echo "<p>Boca a boca</p>";
+      break;
+    default :
+      echo "<p>Cliente não informou de onde veio</p>";
+      break;
+  }
 
     ?>
     <a href="http://localhost/oficina/index.php">Voltar</a>

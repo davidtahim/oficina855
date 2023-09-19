@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <td>Como você nos achou</td>
-            <td><select name="publicidade" id="publicidade">
+            <td><select name="cliente" id="cliente">
                 <option value="a" >Um cliente costumeiro</option>
                 <option value="b">Televisão</option>
                 <option value="c">Telefone</option>
