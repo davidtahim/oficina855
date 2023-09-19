@@ -46,7 +46,7 @@
         $resultadopneu = $qtdpneu * PRECOPNEU;
         $resultadovela = $qtdvela * PRECOVELA;
         $valortotal =  $resultadooleo + $resultadopneu  + $resultadovela;
-        echo "<p>Subtotal: R$".number_format($valortotal,2)."</p>";
+        echo "<p>Subtotal (sem desconto e sem imposto): R$".number_format($valortotal,2)."</p>";
    
    
         //cálculo do desconto do pneu
