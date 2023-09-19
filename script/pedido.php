@@ -19,6 +19,9 @@
     $qtdtotal = $qtdoleo + $qtdpneu + $qtdvela;
     echo "<p> Quantidade de itens solicitados ". $qtdtotal."</p>";
     $valortotal = 0.00;
+    ?>
+    <h3>Preço a Pagar</h3>
+    <?php
     // Definindo as constantes
     define('PRECOPNEU', 100);
     define('PRECOOLEO', 10); 
@@ -60,7 +63,7 @@
         $descontopneu = $resultadopneu * ($desconto/100);
         $pneucomdesconto = $resultadopneu - $descontopneu;
 
-$valortotal =  $resultadooleo + $pneucomdesconto  + $resultadovela;
+    $valortotal =  $resultadooleo + $pneucomdesconto  + $resultadovela;
     $taxa = 0.10; //represnta o valor de taxa
     $totalcomimposto = $valortotal * (1 + $taxa);
     echo "<p> Taxa de impostos: ". $taxa."</p>"; 
