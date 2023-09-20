@@ -15,7 +15,7 @@
     </div>
 </nav>
     </nav>
-<main>
+<main class="mx-auto p-4" style="width: 800px;">
     
         <h1>Sistema de Pedidos</h1>
         <h2>Lista de Pedidos</h2>
@@ -40,7 +40,10 @@
                 <p class="card-text">Quantidade de itens solicitados <?php echo $qtdtotal;?></p>
             </div>
             <div class="card-header">
-                <?php echo "Pedido processado ás ".date('H:i:s')?>
+               <div class="alert alert-primary" role="alert">
+               <?php echo "Pedido processado ás ".date('H:i:s')?>
+               </div>
+               
             </div>
             <!-- Início do Código SE -->
             <?php
@@ -58,8 +61,10 @@
                 </li>
                <?php
                if ($qtdpneu > 0) 
+
                    echo "<p> Quantidade de caixas de pneu ". $qtdpneu."</p>";
                if ($qtdvela > 0)
+
                    echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
            }
            ?>
