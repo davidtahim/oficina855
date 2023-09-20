@@ -96,3 +96,9 @@ input[type="number"] {
   .bd-mode-toggle .dropdown-menu .active .bi {
     display: block !important;
   }
+
+  label.form-label {
+    font-size: 1.2em;
+    font-variant: all-small-caps;
+    font-weight: bolder;
+}

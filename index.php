@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
+
 <header class="sticky-top">
     <div class="px-3 py-2 text-bg-dark border-bottom">
       <div class="container">
@@ -68,35 +69,40 @@
     </div>
     </div>
   </header>
-    <h1>Sistema de Pedidos</h1>
-    <form action="script/pedido.php" method="post">
-        <table>
-            <th>Itens</th>
-            <th>Quantidade</th>
-        <tr>
-            <td>Óleo</td>
-            <td><input type="number" name="qtdoleo" id="qtdoleo" min="0" max="200" value="10"></td>
-        </tr>
-        <tr>
-            <td>Pneu</td>
-            <td><input type="number" name="qtdpneu" id="qtdpneu" min="0" max="200" value="10"></td>
-        </tr>
-        <tr>
-            <td>Vela</td>
-            <td><input type="number" name="qtdvela" id="qtdvela" min="0" max="200" value="10"></td>
-        </tr>
-        <tr>
-            <td>Como você nos achou</td>
-            <td><select name="cliente" id="cliente">
-                <option value="a" >Um cliente costumeiro</option>
-                <option value="b">Televisão</option>
-                <option value="c">Telefone</option>
-                <option value="d">Boca a boca</option>
-            </select></td>
-        </tr>
-        </table>
-        <input type="submit" value="Enviar">
-    </form>
+  <main class="mx-auto p-4" style="width: 800px;">
+    
+<section class="container text-center">  
+  <h1>Sistema de Pedidos</h1>
+</section>
+<h2>Informe os itens e as quantidades</h2>
+  <form action="script/pedido.php" method="post">
+  <div class="mb-3">
+    <label for="qtdoleo" class="form-label">Quantidade de óleo</label>
+    <input type="number" min="0" max="200" value="10"
+      class="form-control" name="qtdoleo" id="qtdoleo">
+  </div>
+  <div class="mb-3">
+    <label for="qtdpneu" class="form-label">Quantidade de Pneu</label>
+    <input type="number" min="0" max="200" value="10"
+      class="form-control" name="qtdpneu" id="qtdpneu">
+  </div>
+  <div class="mb-3">
+    <label for="qtdvela" class="form-label">Quantidade de Vela</label>
+    <input type="number" min="0" max="200" value="10"
+      class="form-control" name="qtdvela" id="qtdvela">
+  </div>
+  <div class="mb-3">
+    <label for="cliente" class="form-label">Onde nos achou</label>
+    <select class="form-select form-select-lg" name="cliente" id="cliente">
+    <option value="a" >Um cliente costumeiro</option>
+    <option value="b">Televisão</option>
+    <option value="c">Telefone</option>
+    <option value="d">Boca a boca</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-info">Enviar</button>
+  </form>
+  </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>   
 </body>
