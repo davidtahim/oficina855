@@ -39,10 +39,37 @@
         ?>
                 <p class="card-text">Quantidade de itens solicitados <?php echo $qtdtotal;?></p>
             </div>
+            <div class="card-header">
+                <?php echo "Pedido processado ás ".date('H:i:s')?>
+            </div>
+            <!-- Início do Código SE -->
+            <?php
+           //trabalhando com o se
+           if ($qtdtotal == 0) {
+               echo '<div class="alert alert-danger" role="alert">';
+               echo 'Faça sua solicitação preenchendo os itens da página anterior';
+               echo '</div>';
+           } else {
+               if ($qtdoleo > 0) 
+               ?>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Item 1</li>
-                <li class="list-group-item">Item 2</li>
-                <li class="list-group-item">Item 3</li>
+                <li class="list-group-item">
+                    <?php echo "<p> Quantidade de caixas de óleo ". $qtdoleo."</p>";?>
+                </li>
+               <?php
+               if ($qtdpneu > 0) 
+                   echo "<p> Quantidade de caixas de pneu ". $qtdpneu."</p>";
+               if ($qtdvela > 0)
+                   echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
+           }
+           ?>
+           
+                <li class="list-group-item">
+                    Item 2
+                </li>
+                <li class="list-group-item">
+                    Item 3
+                </li>
             </ul>
             <div class="card-footer">
                 Card footer
@@ -51,7 +78,7 @@
         
         <h3>Preço a Pagar</h3>
         <?php
-            echo "<p> Pedido processado ás ".date('H:i:s')."</p>";
+           
         //trabalhando com o se
         if ($qtdtotal == 0) {
             echo '<p style="color:red">';
