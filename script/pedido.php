@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oficina Mecânica</title>
-    <link rel="stylesheet" href="/css/principal.css">
+    <link rel="stylesheet" href="http://localhost/oficina/css/principal.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
@@ -59,53 +59,59 @@
                 <li class="list-group-item">
                     <?php echo "<p> Quantidade de caixas de óleo ". $qtdoleo."</p>";?>
                 </li>
-               <?php
-               if ($qtdpneu > 0) 
-
+                <li class="list-group-item">
+                    <?php 
+                   if ($qtdpneu > 0) 
                    echo "<p> Quantidade de caixas de pneu ". $qtdpneu."</p>";
-               if ($qtdvela > 0)
-
+                   ?>
+                </li>
+                <li class="list-group-item">
+                    <?php 
+                   if ($qtdvela > 0)
                    echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
-           }
-           ?>
-           
-                <li class="list-group-item">
-                    Item 2
+                }
+                   ?>
                 </li>
-                <li class="list-group-item">
-                    Item 3
-                </li>
-            </ul>
+            </ul>    
             <div class="card-footer">
-                Card footer
+            <?php 
+             $resultadooleo = $qtdoleo * PRECOOLEO;
+             $resultadopneu = $qtdpneu * PRECOPNEU;
+             $resultadovela = $qtdvela * PRECOVELA;
+             $valortotal =  $resultadooleo + $resultadopneu  + $resultadovela;
+             echo "Subtotal (sem desconto e sem imposto): R$".number_format($valortotal,2);
+            ?>
   </div>
+
+  <?php        
+ //cálculo do desconto do pneu
+ if ($qtdpneu < 10) {
+     $desconto = 0;
+ } elseif (($qtdpneu >=10) && ($qtdpneu <=49)) {
+     $desconto = 5;
+ } elseif (($qtdpneu >=50) && ($qtdpneu <=99)) {
+     $desconto = 10;
+ } elseif ($qtdpneu >= 100) {
+     $desconto = 15;
+ }
+ $descontopneu = $resultadopneu * ($desconto/100);
+ $pneucomdesconto = $resultadopneu - $descontopneu;
+$valortotal =  $resultadooleo + $pneucomdesconto  + $resultadovela;
+$taxa = 0.10; //represnta o valor de taxa
+$totalcomimposto = $valortotal * (1 + $taxa);
+?>
         </div>
-        
-        <h3>Preço a Pagar</h3>
-        <?php
-           
-        //trabalhando com o se
-        if ($qtdtotal == 0) {
-            echo '<p style="color:red">';
-            echo 'Faça sua solicitação preenchendo os itens da página anterior';
-            echo '</p>';
-        } else {
-            if ($qtdoleo > 0) 
-            echo "<p> Quantidade de caixas de óleo ". $qtdoleo."</p>";
-            if ($qtdpneu > 0) 
-                echo "<p> Quantidade de caixas de pneu ". $qtdpneu."</p>";
-            if ($qtdvela > 0)
-                echo "<p> Quantidade de caixas de vela ". $qtdvela."</p>";
-        }
-    
-        
-            $resultadooleo = $qtdoleo * PRECOOLEO;
-            $resultadopneu = $qtdpneu * PRECOPNEU;
-            $resultadovela = $qtdvela * PRECOVELA;
-            $valortotal =  $resultadooleo + $resultadopneu  + $resultadovela;
-            echo "<p>Subtotal (sem desconto e sem imposto): R$".number_format($valortotal,2)."</p>";
-       
-       
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Descontos</h4>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <?php  echo "Desconto: ".$desconto."%";?>
+                </li>
+        </ul>        
+    </div>
+</div>
+            <?PHP        
             //cálculo do desconto do pneu
             if ($qtdpneu < 10) {
                 $desconto = 0;
@@ -151,7 +157,7 @@
       }
     
         ?>
-        
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>        
 </main>
-</body
+</body>
 </html>
